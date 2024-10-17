@@ -188,14 +188,135 @@
 
 // let scoreWithoutPenalty = calculateScore(300);
 
-function sum(message: string, ...num: number[]): string {
-  let total = num.reduce((acc, curr) => {
-    return acc + curr;
-  }, 0);
+// function sum(message: string, ...num: number[]): string {
+//   let total = num.reduce((acc, curr) => {
+//     return acc + curr;
+//   }, 0);
 
-  return `${message}${total}`;
+//   return `${message}${total}`;
+// }
+
+// let result = sum("The total is : ", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+// console.log(result);
+
+// function logMessage(message: string): void {
+//   console.log(message);
+//   return `Hello ${message}`;
+// }
+
+// logMessage("Hello World");
+
+// function processInput(input: string | number) {
+//   console.log(typeof input === "string" ? `${input.toUpperCase()}` : input * 2);
+// }
+
+// processInput(10);
+// processInput("Hello World");
+
+// function createEmployee({ id }: { id: number }): {
+//   id: number;
+//   isActive: boolean;
+// } {
+//   return { id, isActive: id % 2 === 0 };
+// }
+
+// console.log(createEmployee({ id: 10 }));
+// console.log(createEmployee({ id: 23 }));
+
+// function createStudent(student: { id: number; name: string }): void {
+//   console.log(`Student ${student.name} with id ${student.id} is created`);
+// }
+
+// createStudent({ id: 10, name: "Shake and Bake" });
+
+// function processData(
+//   input: string | number,
+//   config: { reverse: boolean } = { reverse: false }
+// ) {
+//   if (typeof input === "string" && config.reverse) {
+//     return input.split("").reverse().join("");
+//   } else if (typeof input === "string") {
+//     return input.toUpperCase();
+//   } else if (typeof input === "number") {
+//     return input * input;
+//   }
+// }
+
+// const res1 = processData("Hello World", { reverse: true });
+// const res2 = processData(10);
+// const res3 = processData("Surya kumar");
+
+// console.log(res1, res2, res3);
+
+// type User = {
+//   id: number;
+//   name: string;
+//   isActive: boolean;
+// };
+
+// const john: User = {
+//   id: 1,
+//   name: "john",
+//   isActive: true,
+// };
+// const susan: User = {
+//   id: 1,
+//   name: "susan",
+//   isActive: false,
+// };
+
+// function createUser(user: User): User {
+//   console.log(`Hello there ${user.name.toUpperCase()} !!!`);
+
+//   return user;
+// }
+
+// type Theme = "light" | "dark";
+
+// let theme: Theme;
+
+// function setTheme(t: Theme): void {
+//   theme = t;
+// }
+
+// setTheme("light");
+
+type Employee = {
+  id: number;
+  name: string;
+  department: string;
+};
+
+type Manager = {
+  id: number;
+  name: string;
+  employees: Employee[];
+};
+
+const alice: Employee = { id: 1, name: "alice", department: "Sales" };
+const steve: Employee = { id: 2, name: "steve", department: "HR" };
+
+const bob: Manager = { id: 3, name: "bob", employees: [alice, steve] };
+
+type Staff = Employee | Manager;
+
+function printStaffDetails(staff: Staff) {
+  if ("employees" in staff) {
+    console.log(
+      `${staff.name} is an manager with the ${staff.employees.length} employees`
+    );
+  } else {
+    console.log(`Name: ${staff.name}, Department: ${staff.department}`);
+  }
 }
 
-let result = sum("The total is : ", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+printStaffDetails(alice);
+printStaffDetails(steve);
+printStaffDetails(bob);
 
-console.log(result);
+type User = {
+  id: number;
+  name: string;
+  isActive: boolean;
+};
