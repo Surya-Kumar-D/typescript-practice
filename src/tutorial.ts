@@ -282,41 +282,256 @@
 
 // setTheme("light");
 
-type Employee = {
-  id: number;
+// type Employee = {
+//   id: number;
+//   name: string;
+//   department: string;
+// };
+
+// type Manager = {
+//   id: number;
+//   name: string;
+//   employees: Employee[];
+// };
+
+// const alice: Employee = { id: 1, name: "alice", department: "Sales" };
+// const steve: Employee = { id: 2, name: "steve", department: "HR" };
+
+// const bob: Manager = { id: 3, name: "bob", employees: [alice, steve] };
+
+// type Staff = Employee | Manager;
+
+// function printStaffDetails(staff: Staff) {
+//   if ("employees" in staff) {
+//     console.log(
+//       `${staff.name} is an manager with the ${staff.employees.length} employees`
+//     );
+//   } else {
+//     console.log(`Name: ${staff.name}, Department: ${staff.department}`);
+//   }
+// }
+
+// printStaffDetails(alice);
+// printStaffDetails(steve);
+// printStaffDetails(bob);
+
+// type User = {
+//   id: number;
+//   name: string;
+//   isActive: boolean;
+// };
+
+// type Book = {
+//   id: number;
+//   name: string;
+//   price: number;
+// };
+
+// const book1: Book = {
+//   id: 1,
+//   name: "The Great Gatsby",
+//   price: 10,
+// };
+
+// const book2: Book = {
+//   id: 2,
+//   name: "The Catcher in the Rye",
+//   price: 20,
+// };
+
+// const discountedBook: Book & { discount: number } = {
+//   id: 3,
+//   name: "Gnomes vs. Humans",
+//   price: 20,
+//   discount: 0.15,
+// };
+
+// const propName = "age";
+
+// type Animal = {
+//   [propName]: number;
+// };
+
+// let tiger: Animal = { [propName]: 10 };
+
+// interface Book {
+//   readonly isbn: number;
+//   title: string;
+//   author: string;
+//   year: number;
+//   genre?: string;
+//   //method
+//   printAuthor(): void;
+//   printTitle(message: string): void;
+//   printSomething: (someValue: number) => number;
+// }
+
+// type Book = {
+//   isbn: number;
+//   title: string;
+//   author: string;
+//   year: number;
+//   genre?: string;
+// };
+
+// const deepWork: Book = {
+//   isbn: 123,
+//   title: "Deep Work",
+//   author: "Cal Newport",
+//   year: 2017,
+//   genre: "self-help",
+//   printAuthor() {
+//     console.log(this.author);
+//   },
+//   printTitle(message) {
+//     console.log(`${this.title} ${message}`);
+//   },
+//   //first option
+//   printSomething: function (someValue) {
+//     return someValue;
+//   },
+
+//   //second option
+//   printSomething: (someValue) => {
+//     console.log(this);
+//     return someValue;
+//   },
+// };
+
+// const res = deepWork.printSomething(23);
+
+// console.log(res);
+
+// interface Computer {
+//   readonly id: number;
+//   brand: string;
+//   ram: number;
+//   storage?: number;
+//   upgradeRam(num: number): void;
+// }
+
+// let lenovoPc: Computer = {
+//   id: 1,
+//   brand: "Lenovo",
+//   ram: 8,
+//   upgradeRam(num) {
+//     return num + this.ram;
+//   },
+// };
+
+// console.log(lenovoPc.upgradeRam(10));
+// console.log(lenovoPc);
+
+// interface Person {
+//   name: string;
+//   getDetails(): string;
+// }
+
+// interface DogOwner {
+//   dogName: string;
+//   getDogDetails(): string;
+// }
+
+// interface Person {
+//   age: number;
+// }
+
+// const person: Person = {
+//   name: "john",
+//   age: 30,
+//   getDetails() {
+//     return `Name: ${this.name}, Age: ${this.age}`;
+//   },
+// };
+
+// interface Employee extends Person {
+//   employeeId: number;
+// }
+
+// const employee: Employee = {
+//   name: "jane",
+//   age: 28,
+//   employeeId: 10,
+//   getDetails() {
+//     return `Name: ${this.name}, Age: ${this.age}, Employee Id: ${this.employeeId}`;
+//   },
+// };
+
+// console.log(person.getDetails());
+// console.log(employee.getDetails());
+
+// interface Manager extends Person, DogOwner {
+//   managePeople(): void;
+// }
+
+// const manager: Manager = {
+//   name: "bob",
+//   age: 35,
+//   dogName: "rex",
+//   getDetails() {
+//     return `Name: ${this.name}, Age: ${this.age}`;
+//   },
+//   getDogDetails() {
+//     return `Dog Name: ${this.dogName}`;
+//   },
+//   managePeople() {
+//     console.log("Managing People.........");
+//   },
+// };
+
+// console.log(manager);
+
+interface Person {
   name: string;
-  department: string;
+}
+
+interface DogOwner extends Person {
+  dogName: string;
+}
+
+interface Manager extends Person, DogOwner {
+  managePeople(): void;
+  delegateTasks(): void;
+}
+const person: Person = {
+  name: "Surya Kumar D",
 };
 
-type Manager = {
-  id: number;
-  name: string;
-  employees: Employee[];
+const dogOwner: DogOwner = {
+  name: " Surya Kumar D",
+  dogName: "Rex",
 };
 
-const alice: Employee = { id: 1, name: "alice", department: "Sales" };
-const steve: Employee = { id: 2, name: "steve", department: "HR" };
+const manager: Manager = {
+  name: "Surya Kumar D",
+  dogName: "Rex",
+  managePeople() {
+    console.log("Managing People.........");
+  },
+  delegateTasks() {
+    console.log("Delegating Tasks.........");
+  },
+};
 
-const bob: Manager = { id: 3, name: "bob", employees: [alice, steve] };
-
-type Staff = Employee | Manager;
-
-function printStaffDetails(staff: Staff) {
-  if ("employees" in staff) {
-    console.log(
-      `${staff.name} is an manager with the ${staff.employees.length} employees`
-    );
+function getEmployee(): Person | DogOwner | Manager {
+  const randomNum = Math.random();
+  if (randomNum < 0.33) {
+    return person;
+  } else if (randomNum < 0.66) {
+    return dogOwner;
   } else {
-    console.log(`Name: ${staff.name}, Department: ${staff.department}`);
+    return manager;
   }
 }
 
-printStaffDetails(alice);
-printStaffDetails(steve);
-printStaffDetails(bob);
+let employee: Person | DogOwner | Manager = getEmployee();
 
-type User = {
-  id: number;
-  name: string;
-  isActive: boolean;
-};
+function isManager(obj: Person | DogOwner | Manager): obj is Manager {
+  return "managePeople" in obj;
+}
+
+if (isManager(employee)) {
+  employee.delegateTasks();
+}
+
+console.log(isManager(employee));
