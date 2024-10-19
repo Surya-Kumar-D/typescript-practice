@@ -481,57 +481,138 @@
 
 // console.log(manager);
 
-interface Person {
+// interface Person {
+//   name: string;
+// }
+
+// interface DogOwner extends Person {
+//   dogName: string;
+// }
+
+// interface Manager extends Person, DogOwner {
+//   managePeople(): void;
+//   delegateTasks(): void;
+// }
+// const person: Person = {
+//   name: "Surya Kumar D",
+// };
+
+// const dogOwner: DogOwner = {
+//   name: " Surya Kumar D",
+//   dogName: "Rex",
+// };
+
+// const manager: Manager = {
+//   name: "Surya Kumar D",
+//   dogName: "Rex",
+//   managePeople() {
+//     console.log("Managing People.........");
+//   },
+//   delegateTasks() {
+//     console.log("Delegating Tasks.........");
+//   },
+// };
+
+// function getEmployee(): Person | DogOwner | Manager {
+//   const randomNum = Math.random();
+//   if (randomNum < 0.33) {
+//     return person;
+//   } else if (randomNum < 0.66) {
+//     return dogOwner;
+//   } else {
+//     return manager;
+//   }
+// }
+
+// let employee: Person | DogOwner | Manager = getEmployee();
+
+// function isManager(obj: Person | DogOwner | Manager): obj is Manager {
+//   return "managePeople" in obj;
+// }
+
+// if (isManager(employee)) {
+//   employee.delegateTasks();
+// }
+
+// console.log(isManager(employee));
+
+//tupe in typescript
+
+// let person: [string, number] = ["john", 25];
+
+// let date: [number, number, number] = [2020, 10, 20];
+
+// function getPerson(): [string, number] {
+//   return ["john", 25];
+// }
+
+// let randomPerson = getPerson();
+
+// enum UserRole {
+//   Admin,
+//   Manager,
+//   Employee,
+// }
+
+// type User = {
+//   id: number;
+//   name: string;
+//   role: UserRole;
+//   contact: [email: string, phone: number];
+// };
+
+// function createUser(user: User): User {
+//   return user;
+// }
+
+// const res = createUser({
+//   id: 1,
+//   name: "Shake and Bake",
+//   role: UserRole.Admin,
+//   contact: ["shakeandbake@gmail.com", 1234567890],
+// });
+
+// console.log(res);
+
+// let someValue: any = "this is a string";
+
+// let strLength: number = (someValue as string).length;
+
+// type Bird = {
+//   name: string;
+// };
+
+// enum Status {
+//   Pending = "pending",
+//   Declined = "declined",
+// }
+
+// type User = {
+//   name: string;
+//   status: Status;
+// };
+
+// let unkownValue: unknown;
+
+// unkownValue = "this is a string";
+// unkownValue = 10;
+// unkownValue = [1, 2, 3];
+// unkownValue = 532.43;
+
+export function sayHello(name: string): void {
+  console.log(`Hello ${name}`);
+}
+
+export let person = "susan";
+
+type Student = {
   name: string;
-}
-
-interface DogOwner extends Person {
-  dogName: string;
-}
-
-interface Manager extends Person, DogOwner {
-  managePeople(): void;
-  delegateTasks(): void;
-}
-const person: Person = {
-  name: "Surya Kumar D",
+  age: number;
 };
 
-const dogOwner: DogOwner = {
-  name: " Surya Kumar D",
-  dogName: "Rex",
+const newStudent: Student = {
+  name: "Shake and Bake",
+  age: 20,
 };
 
-const manager: Manager = {
-  name: "Surya Kumar D",
-  dogName: "Rex",
-  managePeople() {
-    console.log("Managing People.........");
-  },
-  delegateTasks() {
-    console.log("Delegating Tasks.........");
-  },
-};
-
-function getEmployee(): Person | DogOwner | Manager {
-  const randomNum = Math.random();
-  if (randomNum < 0.33) {
-    return person;
-  } else if (randomNum < 0.66) {
-    return dogOwner;
-  } else {
-    return manager;
-  }
-}
-
-let employee: Person | DogOwner | Manager = getEmployee();
-
-function isManager(obj: Person | DogOwner | Manager): obj is Manager {
-  return "managePeople" in obj;
-}
-
-if (isManager(employee)) {
-  employee.delegateTasks();
-}
-
-console.log(isManager(employee));
+export default newStudent;
