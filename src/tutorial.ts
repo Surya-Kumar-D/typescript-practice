@@ -599,20 +599,263 @@
 // unkownValue = [1, 2, 3];
 // unkownValue = 532.43;
 
-export function sayHello(name: string): void {
-  console.log(`Hello ${name}`);
+// export function sayHello(name: string): void {
+//   console.log(`Hello ${name}`);
+// }
+
+// export let person = "susan";
+
+// type Student = {
+//   name: string;
+//   age: number;
+// };
+
+// const newStudent: Student = {
+//   name: "Shake and Bake",
+//   age: 20,
+// };
+
+// export default newStudent;
+
+// type ValueType = string | number | boolean;
+
+// let value: ValueType;
+// const random = Math.random();
+// value = random < 0.33 ? "Hello" : random < 0.66 ? 123.456 : true;
+
+// function checkValue(value: ValueType) {
+//   if (typeof value === "string") {
+//     console.log(value.toLowerCase());
+//     return;
+//   } else if (typeof value === "number") {
+//     console.log(value.toFixed(2));
+//     return;
+//   } else {
+//     console.log(`boolean: ${value}`);
+//   }
+// }
+
+// checkValue(value);
+
+// type Dog = { type: "dog"; name: string; bark: () => void };
+// type Cat = { type: "cat"; name: string; meow: () => void };
+// type Animal = Dog | Cat;
+
+// function makeSound(animal: Animal) {
+//   if (animal.type === "dog") {
+//     animal.bark();
+//   } else if (animal.type === "cat") {
+//     animal.meow();
+//   }
+// }
+
+// function makeSound(animal: Animal): void {
+//   if ("bark" in animal) {
+//     animal.bark();
+//   } else {
+//     animal.meow();
+//   }
+// }
+
+// let animal: Animal = {
+//   type: "dog",
+//   name: "doggy",
+//   bark() {
+//     console.log("bark bark bark");
+//   },
+// };
+
+// makeSound(animal);
+
+// function printLength(str: string | null | undefined) {
+//   if (str) {
+//     console.log(str.length);
+//   } else {
+//     console.log(`No String Provided`);
+//   }
+// }
+
+// printLength("Hello I am nothing but a single thing");
+// printLength(null);
+// printLength(undefined);
+
+// - Start by defining the function using the function keyword followed by the function name, in this case checkInput.
+// - Define the function's parameter. The function takes one parameter, input, which can be of type Date or string. This is denoted by input: Date | string.
+// - Inside the function, use an if statement to check if the input is an instance of Date. This is done using the instanceof operator.
+// - If the input is an instance of Date, return the year part of the date as a string. This is done by calling the getFullYear method on the input and then converting it to a string using the toString method.
+// - If the input is not an instance of Date (which means it must be a string), return the input as it is.
+// - After defining the function, you can use it by calling it with either a Date or a string as the argument. The function will return the year part of the date if a Date is passed, or the original string if a string is passed.
+// - You can store the return value of the function in a variable and then log it to the console to see the result
+
+// function checkInput(input: Date | string) {
+//   if (input instanceof Date) {
+//     return input.getFullYear().toString();
+//   } else {
+//     return input;
+//   }
+// }
+
+// console.log(checkInput(new Date()));
+// console.log(checkInput(`${new Date().getFullYear()}`));
+
+// type Student = {
+//   name: string;
+//   study: () => void;
+// };
+
+// type User = {
+//   name: string;
+//   login: () => void;
+// };
+
+// type Person = Student | User;
+
+// const randomPerson = (): Person => {
+//   return Math.random() > 0.5
+//     ? { name: "john", study: () => console.log("Studying") }
+//     : { name: "mary", login: () => console.log("Logging in") };
+// };
+
+// const person = randomPerson();
+
+// function isStudent(person: Person): person is Student {
+//   //   return student in person;
+//   return (person as Student).study !== undefined;
+// }
+
+// if (isStudent(person)) {
+//   person.study();
+// } else {
+//   person.login();
+// }
+
+// type IncrementAction = {
+//   type: "increment";
+//   amount: number;
+//   timestamp: number;
+//   user: string;
+// };
+
+// type DecrementAction = {
+//   type: "decrement";
+//   amount: number;
+//   timestamp: number;
+//   user: string;
+// };
+
+// type Action = IncrementAction | DecrementAction;
+
+// function reducer(state: number, action: Action) {
+//   switch (action.type) {
+//     case "increment":
+//       return state + action.amount;
+//     case "decrement":
+//       return state - action.amount;
+//     default:
+//       const unexpectedAction: never = action;
+//       throw new Error(`Unexpection action : ${unexpectedAction}`);
+//   }
+// }
+
+// const newState = reducer(15, {
+//   type: "increment",
+//   user: "john",
+//   amount: 5,
+//   timestamp: 12345,
+// });
+
+//Type Generics
+
+// let array1: string[] = ["Apple", "Banana", "Mango"];
+// let array2: number[] = [1, 2, 3];
+// let array3: boolean[] = [true, false, true];
+
+// let array1: Array<string> = ["Apple", "Banana", "Mango"];
+// let array2: Array<number> = [1, 2, 3];
+// let array3: Array<boolean> = [true, false, true];
+
+// function createString(arg: string): string {
+//   return arg;
+// }
+
+// function genericFunction<T>(arg: T): T {
+//   return arg;
+// }
+
+// const someStringValue = genericFunction<string>("hello");
+
+// interface GenericInterface<T> {
+//   value: T;
+//   getValue: () => T;
+// }
+// const genericString: GenericInterface<string> = {
+//   value: "hello",
+//   getValue() {
+//     return this.value;
+//   },
+// };
+
+// console.log(genericString.getValue());
+
+// async function someFun(): Promise<string> {
+//   return 2345;
+// }
+
+// let x = createArray<string>(3, "hello");
+// let y = createArray(5, 100);
+
+// function createArray<T>(length: number, value: T): T[] {
+//   let arr: T[] = [];
+//   for (let i = 0; i < length; i++) {
+//     arr.push(value);
+//   }
+//   return arr;
+// }
+
+// console.log(x);
+// console.log(y);
+
+// function pair<T, U>(param1: T, param2: U): [T, U] {
+//   return [param1, param2];
+// }
+
+// console.log(pair(10, "hello"));
+
+// function processValues<T extends string>(values: T): T {
+//   console.log(values);
+//   return values;
+// }
+
+//
+
+// interface StoreData<T = any> {
+//   data: T[];
+// }
+
+// const storeNumbers: StoreData<number> = {
+//   data: [1, 2, 3, 4, 5],
+// };
+
+// const randomStuff: StoreData = {
+//   data: ["hello", "true", "j"],
+// };
+
+const { data } = axios.get(someUrl);
+
+const { data2 } = axios.get<{ name: string }[]>(someUrl);
+
+export class Axios {
+  get<T = any, R = AxiosResponse<T>, D = any>(
+    url: string,
+    config?: AxiosRequestConfig<D>
+  ): Promise<R>;
 }
 
-export let person = "susan";
-
-type Student = {
-  name: string;
-  age: number;
-};
-
-const newStudent: Student = {
-  name: "Shake and Bake",
-  age: 20,
-};
-
-export default newStudent;
+export interface AxiosResponse<T = any, D = any> {
+  data: T;
+  status: number;
+  statusText: string;
+  headers: RawAxiosResponseHeaders | AxiosResponseHeaders;
+  config: InternalAxiosRequestConfig<D>;
+  request?: any;
+}
