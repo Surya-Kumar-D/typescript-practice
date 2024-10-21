@@ -840,22 +840,132 @@
 //   data: ["hello", "true", "j"],
 // };
 
-const { data } = axios.get(someUrl);
+// const { data } = axios.get(someUrl);
 
-const { data2 } = axios.get<{ name: string }[]>(someUrl);
+// const { data2 } = axios.get<{ name: string }[]>(someUrl);
 
-export class Axios {
-  get<T = any, R = AxiosResponse<T>, D = any>(
-    url: string,
-    config?: AxiosRequestConfig<D>
-  ): Promise<R>;
+// export class Axios {
+//   get<T = any, R = AxiosResponse<T>, D = any>(
+//     url: string,
+//     config?: AxiosRequestConfig<D>
+//   ): Promise<R>;
+// }
+
+// export interface AxiosResponse<T = any, D = any> {
+//   data: T;
+//   status: number;
+//   statusText: string;
+//   headers: RawAxiosResponseHeaders | AxiosResponseHeaders;
+//   config: InternalAxiosRequestConfig<D>;
+//   request?: any;
+// }
+
+// const url = "https://www.course-api.com/react-tours-project";
+
+// async function fetchData(url: string) {
+//   try {
+//     const response = await fetch(url);
+//     if (!response.ok) {
+//       throw new Error(`HTTP error! Status: ${response.status}`);
+//     }
+//     const data = await response.json();
+//     return data;
+//   } catch (error) {
+//     const errmsg =
+//       error instanceof Error ? error.message : "there was an error......";
+//     console.log(errmsg);
+//     return [];
+//   }
+// }
+
+// const tours = await fetchData(url);
+
+// tours?.map((tour) => {
+//   console.log(tour.title);
+// });
+// import { z } from "zod";
+
+// const tourSchema = z.object({
+//   id: z.string(),
+//   name: z.string(),
+//   info: z.string(),
+//   image: z.string(),
+//   price: z.string(),
+// });
+
+// type Tour = {
+//   id: string;
+//   name: string;
+//   info: string;
+//   image: string;
+//   price: number;
+// };
+
+// type Tour = z.infer<typeof tourSchema>;
+
+// const url = "https://www.course-api.com/react-tours-project";
+
+// async function fetchData(url: string): Promise<Tour[]> {
+//   try {
+//     const response = await fetch(url);
+//     if (!response.ok) {
+//       throw new Error(`HTTP error! Status: ${response.status}`);
+//     }
+//     const rawData: Tour[] = await response.json();
+//     const result = tourSchema.array().safeParse(rawData);
+//     console.log(rawData);
+//     if (!result.success) {
+//       throw new Error(`Invalid data: ${result.error}`);
+//     }
+//     return result.data;
+//   } catch (error) {
+//     const errmsg =
+//       error instanceof Error ? error.message : "there was an error......";
+//     console.log(errmsg);
+//     return [];
+//   }
+// }
+
+// let tours = await fetchData(url);
+
+// tours.map((tour) => {
+//   console.log(tour.name);
+// });
+
+// import { Random } from "./types";
+
+// document;
+
+// class Book {
+//   private checkedOut: boolean = false;
+//   constructor(public title: string, public author: string) {}
+//   get info() {
+//     return `Title: ${this.title}, Author: ${this.author}`;
+//   }
+//   set checkOut(checkedOut: boolean) {
+//     this.checkedOut = checkedOut;
+//   }
+// }
+
+// const deepWork = new Book("deep work ", "cal newport");
+
+// console.log(deepWork.info);
+// deepWork.checkOut = true;
+// console.log(deepWork);
+
+interface Iperson {
+  name: string;
+  age: number;
+  greet(): void;
 }
 
-export interface AxiosResponse<T = any, D = any> {
-  data: T;
-  status: number;
-  statusText: string;
-  headers: RawAxiosResponseHeaders | AxiosResponseHeaders;
-  config: InternalAxiosRequestConfig<D>;
-  request?: any;
+class Person implements Iperson {
+  constructor(public name: string, public age: number) {}
+  greet() {
+    console.log(`Hello ${this.name}`);
+  }
 }
+
+const surya = new Person("surya", 20);
+
+surya.greet();
