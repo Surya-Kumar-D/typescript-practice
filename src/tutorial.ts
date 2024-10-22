@@ -953,19 +953,19 @@
 // deepWork.checkOut = true;
 // console.log(deepWork);
 
-interface Iperson {
-  name: string;
-  age: number;
-  greet(): void;
-}
+// interface Iperson {
+//   name: string;
+//   age: number;
+//   greet(): void;
+// }
 
-class Person implements Iperson {
-  constructor(public name: string, public age: number) {}
-  greet() {
-    console.log(`Hello ${this.name}`);
-  }
-}
+// class Person implements Iperson {
+//   constructor(public name: string, public age: number) {}
+//   greet() {
+//     console.log(`Hello ${this.name}`);
+//   }
+// }
 
-const surya = new Person("surya", 20);
+// const surya = new Person("surya", 20);
 
-surya.greet();
+// surya.greet();
